@@ -1,0 +1,253 @@
+/* Faz o body ocupar toda a altura e organizar header, main e footer */
+body {
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+    margin: 0;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background: linear-gradient(120deg, #f5f7fa, #c3cfe2);
+    color: #333;
+}
+
+header {
+    text-align: center;
+    background-color: #7b1fa2;
+    color: #fff;
+    padding: 30px 20px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+header h1 {
+    margin: 0;
+    font-size: 2em;
+}
+
+header p {
+    margin: 10px 0 0 0;
+    font-size: 1.3em;
+}
+
+nav {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 10px;
+    padding: 15px;
+    background-color: #4a148c;
+}
+
+nav button {
+    background-color: #7b1fa2;
+    color: white;
+    border: none;
+    padding: 12px 18px;
+    border-radius: 8px;
+    cursor: pointer;
+    font-weight: bold;
+    transition: 0.3s;
+}
+
+nav button:hover {
+    background-color: #311b92;
+}
+
+main {
+    flex: 1; /* ocupa o espaço disponível, empurrando o footer para baixo */
+    padding: 20px;
+    max-width: 900px;
+    margin: auto;
+}
+
+.conteudo {
+    display: none;
+    animation: fadeIn 0.6s ease-in-out;
+}
+
+h2 {
+    color: #4a148c;
+    margin-bottom: 10px;
+}
+
+p {
+    font-size: 1.2em;
+    line-height: 1.6em;
+}
+
+/* Cards gerais */
+.card {
+    border-left: 6px solid #7b1fa2;
+    padding: 18px 22px;
+    border-radius: 10px;
+    margin: 10px 0 20px 0;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s, box-shadow 0.3s;
+    font-size: 1.2em;
+}
+
+.card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 8px 12px rgba(0, 0, 0, 0.2);
+}
+
+/* Cards diferenciados por tipo */
+#minicontos .card {
+    background-color: #ffe0b2;
+    border-left-color: #fb8c00;
+}
+
+#microcontos .card {
+    background-color: #c8e6c9;
+    border-left-color: #43a047;
+}
+
+#nanocontos .card {
+    background-color: #bbdefb;
+    border-left-color: #1e88e5;
+}
+
+.pergunta {
+    margin: 20px 0;
+    padding: 18px;
+    border-radius: 10px;
+    background: #f3e5f5;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.pergunta p {
+    margin-bottom: 12px;
+}
+
+.pergunta button {
+    display: block;
+    margin: 6px 0;
+    width: 100%;
+    text-align: left;
+    background: #7b1fa2;
+    color: white;
+    border: none;
+    padding: 12px;
+    border-radius: 8px;
+    cursor: pointer;
+    font-weight: bold;
+    transition: 0.3s;
+}
+
+.pergunta button:hover {
+    background: #4a148c;
+}
+
+.pergunta button.correto {
+    background: #4caf50 !important;
+    animation: piscarVerde 0.5s 2;
+}
+
+.pergunta button.errado {
+    background: #e53935 !important;
+    animation: piscarVermelho 0.5s 2;
+}
+
+@keyframes piscarVerde {
+
+    0%,
+    100% {
+        background-color: #4caf50;
+    }
+
+    50% {
+        background-color: #a5d6a7;
+    }
+}
+
+@keyframes piscarVermelho {
+
+    0%,
+    100% {
+        background-color: #e53935;
+    }
+
+    50% {
+        background-color: #ef9a9a;
+    }
+}
+
+.resultado {
+    margin-top: 20px;
+    font-weight: bold;
+    font-size: 1.3em;
+    text-align: center;
+}
+
+.botao-final {
+    margin: 20px auto;
+    display: block;
+    padding: 12px 25px;
+    border: none;
+    border-radius: 10px;
+    background: #311b92;
+    color: white;
+    font-weight: bold;
+    cursor: pointer;
+    transition: 0.3s;
+}
+
+.botao-final:hover {
+    background: #1a237e;
+}
+
+/* Footer sempre no final */
+footer {
+    text-align: center;
+    padding: 10px;
+    background-color: #4a148c;
+    color: white;
+    box-shadow: 0 4px 6px rgba(0,0,0,0.2);
+}
+
+footer {
+    display: none;
+    /* escondido por padrão */
+}
+
+#quiz footer {
+    display: block;
+    /* aparece apenas na aba do quiz */
+}
+
+.barra-progresso {
+    width: 100%;
+    background-color: #ddd;
+    border-radius: 20px;
+    margin: 15px 0;
+    height: 15px;
+    overflow: hidden;
+}
+
+#progresso {
+    width: 0%;
+    height: 100%;
+    background-color: #7b1fa2;
+    transition: width 0.5s;
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(10px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@media(max-width:600px) {
+    nav {
+        flex-direction: column;
+    }
+
+    .card,
+    .pergunta button {
+        font-size: 1em;
+    }
+}
